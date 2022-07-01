@@ -28,11 +28,11 @@ func TestIntMinTableDriven(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		// t.Run enables running "subtests", one for each
+		// t.Run enables running "sub tests", one for each
 		// table entry. These are shown separately
 		// when executing `go test -v`.
-		testname := fmt.Sprintf("%d,%d", tt.a, tt.b)
-		t.Run(testname, func(t *testing.T) {
+		name := fmt.Sprintf("%d,%d", tt.a, tt.b)
+		t.Run(name, func(t *testing.T) {
 			ans := IntMin(tt.a, tt.b)
 			if ans != tt.want {
 				t.Errorf("got %d, want %d", ans, tt.want)
@@ -40,4 +40,3 @@ func TestIntMinTableDriven(t *testing.T) {
 		})
 	}
 }
-
