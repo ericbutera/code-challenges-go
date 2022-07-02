@@ -1,4 +1,4 @@
-package main
+package learn
 
 const englishHelloPrefix = "Hello, "
 
