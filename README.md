@@ -12,3 +12,9 @@ code challenges, golang edition
 ```sh
 go test
 ```
+
+## notes
+
+- no overloads
+- no default parameters
+- [no ternary](https://go.dev/doc/faq#Does_Go_have_a_ternary_form)
