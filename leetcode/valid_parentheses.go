@@ -11,6 +11,7 @@ var Inverse = map[string]string{
 const Starts = "[{("
 const Ends = "]})"
 
+// https://www.educative.io/answers/how-to-implement-a-stack-in-golang
 type Stack []string
 
 func (s *Stack) IsEmpty() bool {
@@ -42,11 +43,7 @@ func isValidParentheses(input string) bool {
 		}
 	}
 
-	if len(stack) > 0 {
-		return false
-	}
-
-	return true
+	return len(stack) <= 0
 }
 
 func parseChar(char string, stack *Stack) bool {
@@ -61,7 +58,7 @@ func parseChar(char string, stack *Stack) bool {
 		}
 
 		last, exists := stack.Pop()
-		if exists == true {
+		if exists {
 			inverse := Inverse[char]
 			if last == inverse {
 				return true

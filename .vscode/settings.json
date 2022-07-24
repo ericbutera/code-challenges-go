@@ -1,8 +1,8 @@
  {
-	"go.lintOnSave": "file",
+	"go.lintOnSave": "workspace",
 	"go.lintTool":"golangci-lint",
 	"go.lintFlags": [
-		"--fast"
+		"--issues-exit-code=0"
 	],
 	"[go]": {
 			"editor.formatOnSave": true,
