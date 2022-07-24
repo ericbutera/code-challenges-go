@@ -29,8 +29,8 @@ func TestTwoSumCases(t *testing.T) {
 
 	for _, tc := range cases {
 		t.Run(fmt.Sprintf("%v %d", tc.Numbers, tc.Target), func(t *testing.T) {
-			actual := twoSumCache(tc.Numbers, tc.Target)
-			assert.Equal(t, tc.Expected, actual)
+			assert.Equal(t, tc.Expected, twoSumCache(tc.Numbers, tc.Target))
+			assert.Equal(t, tc.Expected, twoSum(tc.Numbers, tc.Target))
 		})
 	}
 }
