@@ -17,6 +17,6 @@ func TestSlice(t *testing.T) {
 		keys = append(keys, k)
 		vals = append(vals, v)
 	}
-	assert.Equal(t, []string{"a", "b"}, keys)
-	assert.Equal(t, []string{"apple", "banana"}, vals)
+	assert.ElementsMatch(t, []string{"a", "b"}, keys)
+	assert.ElementsMatch(t, []string{"apple", "banana"}, vals)
 }
