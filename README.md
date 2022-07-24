@@ -17,6 +17,7 @@ go test
 
 ## notes
 
+- [SliceTricks](https://github.com/golang/go/wiki/SliceTricks)
 - In Go, := is for declaration + assignment, whereas = is for assignment only.
 - no overloads
 - no default parameters
