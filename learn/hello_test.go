@@ -2,25 +2,19 @@
 
 package learn
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+)
 
 func TestHello(t *testing.T) {
-	assertCorrectMessage := func(t *testing.T, got, want string) {
-		t.Helper()
-		if got != want {
-			t.Errorf("got '%s' want '%s'", got, want)
-		}
-	}
 	t.Run("saying hello to people", func(t *testing.T) {
 		got := Hello("Eric")
-		want := "Hello, Eric"
-
-		assertCorrectMessage(t, got, want)
+		assert.Equal(t, "Hello, Eric", got)
 	})
 	t.Run("say 'Hello, World' when empty string is supplied", func(t *testing.T) {
 		got := Hello("")
-		want := "Hello, World"
-
-		assertCorrectMessage(t, got, want)
+		assert.Equal(t, "Hello, World", got)
 	})
 }
