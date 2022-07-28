@@ -1,4 +1,4 @@
-module ericbutera/code-challenges-go
+module github.com/ericbutera/code-challenges-go
 
 go 1.18
 
