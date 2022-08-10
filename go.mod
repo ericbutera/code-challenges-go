@@ -2,7 +2,10 @@ module github.com/ericbutera/code-challenges-go
 
 go 1.18
 
-require github.com/stretchr/testify v1.8.0
+require (
+	github.com/ssoroka/slice v0.0.0-20220402005549-78f0cea3df8b
+	github.com/stretchr/testify v1.8.0
+)
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
