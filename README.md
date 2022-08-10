@@ -9,6 +9,7 @@ code challenges, golang edition
 
 ## resources
 
+- [table driven tests](https://github.com/golang/go/wiki/TableDrivenTests)
 - [effective go](https://go.dev/doc/effective_go#introduction)
 - [learn go with tests](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/hello-world)
 - [go by example](https://gobyexample.com/)
