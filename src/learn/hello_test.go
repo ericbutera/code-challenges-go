@@ -21,14 +21,14 @@ func TestHello(t *testing.T) {
 
 func TestTableDrivenHello(t *testing.T) {
 	// https://github.com/golang/go/wiki/TableDrivenTests#example-of-a-table-driven-test
-	var hellotests = []struct {
+	var tests = []struct {
 		in  string
 		out string
 	}{
 		{"Eric", "Hello, Eric"},
 		{"", "Hello, World"},
 	}
-	for _, tt := range hellotests {
+	for _, tt := range tests {
 		t.Run(tt.in, func(t *testing.T) {
 			got := Hello(tt.in)
 			assert.Equal(t, tt.out, got)
