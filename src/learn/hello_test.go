@@ -18,3 +18,37 @@ func TestHello(t *testing.T) {
 		assert.Equal(t, "Hello, World", got)
 	})
 }
+
+func TestTableDrivenHello(t *testing.T) {
+	// https://github.com/golang/go/wiki/TableDrivenTests#example-of-a-table-driven-test
+	var hellotests = []struct {
+		in  string
+		out string
+	}{
+		{"Eric", "Hello, Eric"},
+		{"", "Hello, World"},
+	}
+	for _, tt := range hellotests {
+		t.Run(tt.in, func(t *testing.T) {
+			got := Hello(tt.in)
+			assert.Equal(t, tt.out, got)
+		})
+	}
+}
+
+func TestTableDrivenMapHello(t *testing.T) {
+	// https://github.com/golang/go/wiki/TableDrivenTests#using-a-map-to-store-test-cases
+	tests := map[string]struct {
+		input  string
+		result string
+	}{
+		"greets name":                    {"Eric", "Hello, Eric"},
+		"greets world unless name given": {"", "Hello, World"},
+	}
+	for name, test := range tests {
+		t.Run(name, func(t *testing.T) {
+			got := Hello(test.input)
+			assert.Equal(t, test.result, got)
+		})
+	}
+}
