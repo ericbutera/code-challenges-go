@@ -28,7 +28,6 @@ func TestTableDrivenHello(t *testing.T) {
 		{"Eric", "Hello, Eric"},
 		{"", "Hello, World"},
 	}
-
 	for _, tt := range tests {
 		t.Run(tt.in, func(t *testing.T) {
 			got := Hello(tt.in)
