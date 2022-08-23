@@ -33,3 +33,12 @@ func TestBuiltIn(t *testing.T) {
 	assert.Equal(t, "ab", keys)
 	assert.Equal(t, "applebanana", vals)
 }
+
+func TestMake(t *testing.T) {
+	bikes := make(map[string]string)
+	bikes["yeti"] = "sb130"
+	bikes["bmc"] = "teamelite 02 one"
+	bikes["cinelli"] = "trackshark"
+	assert.Equal(t, bikes["yeti"], "sb130")
+	assert.Equal(t, len(bikes), 3)
+}
