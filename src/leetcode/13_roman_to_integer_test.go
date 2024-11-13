@@ -1,4 +1,4 @@
-package leetcode
+package leetcode_test
 
 import (
 	"testing"
@@ -115,18 +115,18 @@ func romanToInt(input string) int {
 	return count
 }
 
-func TestMMMXLV(t *testing.T) {
+func Test_13_MMMXLV(t *testing.T) {
 	assert.Equal(t, 3045, romanToInt("MMMXLV"))
 }
 
-func TestExample1(t *testing.T) {
+func Test_13_Example1(t *testing.T) {
 	assert.Equal(t, 3, romanToInt("III"))
 }
 
-func TestExample2(t *testing.T) {
+func Test_13_Example2(t *testing.T) {
 	assert.Equal(t, 58, romanToInt("LVIII"))
 }
 
-func TestExample3(t *testing.T) {
+func Test_13_Example3(t *testing.T) {
 	assert.Equal(t, 1994, romanToInt("MCMXCIV"))
 }
