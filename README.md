@@ -2,11 +2,6 @@
 
 code challenges, golang edition
 
-## container registry
-
-- [dockerhub](https://hub.docker.com/r/ericbutera/code-challenges-go) `docker pull ericbutera/code-challenges-go`
-- [ghcr](https://github.com/ericbutera/code-challenges-go/pkgs/container/code-challenges-go) `docker pull ghcr.io/ericbutera/code-challenges-go:release`
-
 ## resources
 
 - [table driven tests](https://github.com/golang/go/wiki/TableDrivenTests)
