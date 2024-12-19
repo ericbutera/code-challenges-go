@@ -46,5 +46,5 @@ func TestMake(t *testing.T) {
 	bikes["bmc"] = "teamelite 02 one"
 	bikes["cinelli"] = "trackshark"
 	assert.Equal(t, "sb130", bikes["yeti"])
-	assert.Len(t, 3, len(bikes))
+	assert.Len(t, bikes, 3)
 }
