@@ -10,15 +10,16 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
-
-            - name: Set up Go
-              uses: actions/setup-go@v2
+            - uses: actions/checkout@v4
+            - uses: actions/setup-go@v5
               with:
                   go-version: 1.23
 
             - name: Run golangci-lint
-              uses: golangci/golangci-lint-action@v3.2.0
+              uses: golangci/golangci-lint-action@v6
+              with:
+                  version: v1.62
+                  args: --timeout=5m --config=.golangci.yaml
 
             - name: Test
               run: go test -v ./...

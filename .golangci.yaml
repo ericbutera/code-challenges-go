@@ -1,0 +1,9 @@
+# https://golangci-lint.run/usage/linters/
+linters:
+  enable-all: true
+  disable:
+    - intrange
+    - depguard
+    - nlreturn
+    - exportloopref
+    - wsl # only one cuddle assignment allowed before range statement

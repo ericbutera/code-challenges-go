@@ -1,4 +1,4 @@
-package learn
+package learn_test
 
 import (
 	"testing"
@@ -7,10 +7,11 @@ import (
 )
 
 func TestPointer(t *testing.T) {
-	var value int = 10
-	var pointy *int = &value
-	assert.Equal(t, value, 10)
-	assert.Equal(t, *pointy, 10)
+	t.Parallel()
+	value := 10
+	pointy := &value
+	assert.Equal(t, 10, value)
+	assert.Equal(t, 10, *pointy)
 	assert.Equal(t, pointy, &value)
 	assert.Equal(t, *pointy, value)
 }

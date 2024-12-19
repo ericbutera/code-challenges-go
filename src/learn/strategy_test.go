@@ -1,4 +1,4 @@
-package learn
+package learn_test
 
 import (
 	"testing"
@@ -7,35 +7,35 @@ import (
 )
 
 func StratFetcher(s FetchStrategy) string {
-	return s.Url()
+	return s.URL()
 }
 
 type FetchStrategy interface {
-	Url() string
+	URL() string
 }
 
-type IncrementalStrategy struct {
-}
+type IncrementalStrategy struct{}
 
-func (i *IncrementalStrategy) Url() string {
+func (i *IncrementalStrategy) URL() string {
 	return "incremental-url"
 }
 
-type FullStrategy struct {
-}
+type FullStrategy struct{}
 
-func (f *FullStrategy) Url() string {
+func (f *FullStrategy) URL() string {
 	return "full-url"
 }
 
 func TestStrategy(t *testing.T) {
+	t.Parallel()
 	full := &FullStrategy{}
-	assert.Equal(t, full.Url(), "full-url")
+	assert.Equal(t, "full-url", full.URL())
 	inc := &IncrementalStrategy{}
-	assert.Equal(t, inc.Url(), "incremental-url")
+	assert.Equal(t, "incremental-url", inc.URL())
 }
 
 func TestFetcher(t *testing.T) {
+	t.Parallel()
 	full := &FullStrategy{}
-	assert.Equal(t, StratFetcher(full), "full-url")
+	assert.Equal(t, "full-url", StratFetcher(full))
 }

@@ -1,26 +1,29 @@
-package learn
+package learn_test
 
 import (
 	"fmt"
 	"testing"
 
+	"github.com/ericbutera/code-challenges-go/src/learn"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestSum(t *testing.T) {
+	t.Parallel()
 	numbers := [5]int{1, 2, 3, 4, 5}
-	got := Sum(numbers)
+	got := learn.Sum(numbers)
 	assert.Equal(t, 15, got)
 }
 
 func TestAdder(t *testing.T) {
-	sum := Add(2, 2)
+	t.Parallel()
+	sum := learn.Add(2, 2)
 	assert.Equal(t, 4, sum)
 }
 
 // https://go.dev/blog/examples
 func ExampleAdd() {
-	sum := Add(1, 5)
+	sum := learn.Add(1, 5)
 	fmt.Println(sum)
 	// Output: 6
 }

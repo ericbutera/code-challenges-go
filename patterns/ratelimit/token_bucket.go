@@ -1,4 +1,4 @@
-package rate_limit
+package ratelimit
 
 import (
 	"sync"
@@ -17,7 +17,7 @@ type TokenBucket struct {
 
 // NewTokenBucket initializes a new token bucket.
 func NewTokenBucket(capacity int, fillRate time.Duration) *TokenBucket {
-	return &TokenBucket{
+	return &TokenBucket{ //nolint:exhaustruct
 		capacity:   capacity,
 		tokens:     capacity,
 		fillRate:   fillRate,
@@ -47,12 +47,12 @@ func (tb *TokenBucket) refill() {
 	tokensToAdd := int(elapsed / tb.fillRate)
 
 	if tokensToAdd > 0 {
-		tb.tokens = min(tb.capacity, tb.tokens+tokensToAdd)
+		tb.tokens = minInt(tb.capacity, tb.tokens+tokensToAdd)
 		tb.lastRefill = now
 	}
 }
 
-func min(a, b int) int {
+func minInt(a, b int) int {
 	if a < b {
 		return a
 	}
