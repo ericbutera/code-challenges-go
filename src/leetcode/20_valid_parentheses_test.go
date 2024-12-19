@@ -57,27 +57,27 @@ loop:
 	if open.length -> error: there are still opened tags
 */
 
-func isOpener(c string) bool { // todo in array
-	// TODO: in array
+func isOpener(c string) bool {
+	// use in array
 	// var openers = []string{"(", "{", "["}
 	// var closers = []string{")", "}", "]"}
 	return c == "(" || c == "{" || c == "["
 }
 
-func closerFor(c string) string {
-	// TODO: use map
+func closerFor(closer string) string {
+	// use map
 	// var closerFor = []map[string]string{
 	// 	"(": ")",
 	// 	"[", "]",
 	// 	"{", "}",
 	// }
-	if c == "(" {
+	if closer == "(" {
 		return ")"
 	}
-	if c == "{" {
+	if closer == "{" {
 		return "}"
 	}
-	if c == "[" {
+	if closer == "[" {
 		return "]"
 	}
 	panic("lies")
@@ -87,7 +87,7 @@ func isValid(s string) bool {
 	closers := make([]string, 0) // keeps track of required closers
 
 	for _, c := range s {
-		current := string(c) // todo char type?
+		current := string(c) // char type?
 		if isOpener(current) {
 			// append the matching closer
 			closer := closerFor(current)
@@ -113,6 +113,7 @@ func isValid(s string) bool {
 }
 
 func Test_20(t *testing.T) {
+	t.Parallel()
 	cases := []struct {
 		Name   string
 		Input  string
@@ -142,6 +143,7 @@ func Test_20(t *testing.T) {
 
 	for _, tc := range cases {
 		t.Run(tc.Name, func(t *testing.T) {
+			t.Parallel()
 			assert.Equal(t, tc.Expect, isValid(tc.Input))
 		})
 	}

@@ -59,74 +59,77 @@ M             1000
 // 	M: 1_000,
 // }
 
-func romanToInt(input string) int {
+func romanToInt(input string) int { //nolint:cyclop,funlen
 	count := 0
 
 	length := len(input)
-	for x := 0; x < length; x++ {
+	for x := 0; x < length; x++ { //nolint:varnamelen
 		current := string(input[x])
 
 		var current2 string
 		hasTwo := x+2 <= length
 		if hasTwo {
-			current2 = string(input[x : x+2])
+			current2 = input[x : x+2]
 		}
 
 		inc := 0
 
-		if current == "M" {
+		switch {
+		case current == "M":
 			inc += 1_000
-		} else if hasTwo && current2 == "CM" {
+		case hasTwo && current2 == "CM":
 			inc += 900
 			x++
-		} else if current == "D" {
+		case current == "D":
 			inc += 500
-		} else if hasTwo && current2 == "CD" {
+		case hasTwo && current2 == "CD":
 			inc += 400
 			x++
-		} else if current == "C" {
+		case current == "C":
 			inc += 100
-		} else if hasTwo && current2 == "XC" {
+		case hasTwo && current2 == "XC":
 			inc += 90
 			x++
-		} else if current == "L" {
+		case current == "L":
 			inc += 50
-		} else if hasTwo && current2 == "XL" {
+		case hasTwo && current2 == "XL":
 			inc += 40
 			x++
-		} else if current == "X" {
+		case current == "X":
 			inc += 10
-		} else if hasTwo && current2 == "IX" {
+		case hasTwo && current2 == "IX":
 			inc += 9
 			x++
-		} else if current == "V" {
+		case current == "V":
 			inc += 5
-		} else if hasTwo && current2 == "IV" {
+		case hasTwo && current2 == "IV":
 			inc += 4
 			x++
-		} else if current == "I" {
-			inc += 1
+		case current == "I":
+			inc++
 		}
 		count += inc
-
-		// fmt.Printf("finish x %v inc %v count %v\n", x, inc, count)
 	}
 
 	return count
 }
 
 func Test_13_MMMXLV(t *testing.T) {
+	t.Parallel()
 	assert.Equal(t, 3045, romanToInt("MMMXLV"))
 }
 
 func Test_13_Example1(t *testing.T) {
+	t.Parallel()
 	assert.Equal(t, 3, romanToInt("III"))
 }
 
 func Test_13_Example2(t *testing.T) {
+	t.Parallel()
 	assert.Equal(t, 58, romanToInt("LVIII"))
 }
 
 func Test_13_Example3(t *testing.T) {
+	t.Parallel()
 	assert.Equal(t, 1994, romanToInt("MCMXCIV"))
 }

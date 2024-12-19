@@ -1,5 +1,5 @@
 // https://github.com/ssoroka/slice
-package learn
+package learn_test
 
 import (
 	"testing"
@@ -9,15 +9,17 @@ import (
 )
 
 func TestUnique(t *testing.T) {
+	t.Parallel()
 	input := []int{1, 1, 1, 1}
 	result := slice.Unique(input)
-	assert.Equal(t, result, []int{1})
+	assert.Equal(t, []int{1}, result)
 }
 
 func TestMap(t *testing.T) {
+	t.Parallel()
 	input := []string{"a", "b", "c"}
-	result := slice.Map[string, string](input, func(i int, s string) string {
+	result := slice.Map[string, string](input, func(_ int, s string) string {
 		return s + s
 	})
-	assert.Equal(t, result, []string{"aa", "bb", "cc"})
+	assert.Equal(t, []string{"aa", "bb", "cc"}, result)
 }

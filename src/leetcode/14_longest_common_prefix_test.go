@@ -70,9 +70,9 @@ func longestCommonPrefix(words []string) string {
 
 	// note: hasOffset can be removed if we first find the smallest word before iterating
 
-	matchWord := words[0]         // matchWord = flower; use first word as bounds check
-	matchLength := len(matchWord) // matchLength = 6; len(flower)
-	for cursor := 0; cursor < matchLength; cursor++ {
+	matchWord := words[0]                             // matchWord = flower; use first word as bounds check
+	matchLength := len(matchWord)                     // matchLength = 6; len(flower)
+	for cursor := 0; cursor < matchLength; cursor++ { //nolint:intrange
 		matchLetter := matchWord[cursor] // matchLetter = f
 		for _, word := range words {     // word = flower
 			hasOffset := len(word) > cursor
@@ -93,22 +93,8 @@ func longestCommonPrefix(words []string) string {
 	return prefix
 }
 
-// func Test_14_Example1(t *testing.T) {
-// 	assert.Equal(t, "fl", longestCommonPrefix([]string{
-// 		"flower",
-// 		"flow",
-// 		"flight",
-// 	}))
-// }
-// func Test_14_Example2(t *testing.T) {
-// 	assert.Equal(t, "", longestCommonPrefix([]string{
-// 		"dog",
-// 		"racecar",
-// 		"car",
-// 	}))
-// }
-
 func Test_14(t *testing.T) {
+	t.Parallel()
 	cases := []struct {
 		Name     string
 		Input    []string
@@ -148,6 +134,7 @@ func Test_14(t *testing.T) {
 
 	for _, tc := range cases {
 		t.Run(tc.Name, func(t *testing.T) {
+			t.Parallel()
 			assert.Equal(t, tc.Expected, longestCommonPrefix(tc.Input))
 		})
 	}
