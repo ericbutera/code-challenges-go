@@ -1,4 +1,4 @@
-package rate_limit
+package ratelimit
 
 import (
 	"sync"
@@ -16,7 +16,7 @@ type SlidingWindowRateLimiter struct {
 
 // NewSlidingWindowRateLimiter initializes a new sliding window rate limiter.
 func NewSlidingWindowRateLimiter(windowSize time.Duration, maxRequests int) *SlidingWindowRateLimiter {
-	return &SlidingWindowRateLimiter{
+	return &SlidingWindowRateLimiter{ //nolint:exhaustruct
 		windowSize:   windowSize,
 		maxRequests:  maxRequests,
 		requestTimes: []time.Time{},
@@ -33,7 +33,7 @@ func (rl *SlidingWindowRateLimiter) Allow() bool {
 
 	// Remove timestamps outside the sliding window
 	i := 0
-	for ; i < len(rl.requestTimes) && rl.requestTimes[i].Before(cutoff); i++ {
+	for ; i < len(rl.requestTimes) && rl.requestTimes[i].Before(cutoff); i++ { //nolint:revive
 	}
 	rl.requestTimes = rl.requestTimes[i:]
 
