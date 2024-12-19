@@ -1,10 +1,11 @@
-FROM golang:1.18-alpine
-RUN apk add build-base
+FROM golang:1.23.2
 
 WORKDIR /app
 
-COPY . ./
+COPY go.mod go.sum ./
 
 RUN go mod download
 
-ENTRYPOINT [ "go", "test", "-v", "./..." ]
+COPY . ./
+
+CMD [ "go", "test", "-v", "./..." ]
