@@ -10,7 +10,6 @@ linters:
     - lll # line length limit
     - godox
     - godot
-    - gomnd
     - mnd
     - exhaustruct
 
