@@ -7,3 +7,15 @@ linters:
     - nlreturn
     - exportloopref
     - wsl # only one cuddle assignment allowed before range statement
+    - lll # line length limit
+    - godox
+    - godot
+    - mnd
+    - exhaustruct
+
+issues:
+  exclude-rules:
+    - linters:
+        - funlen
+        - cyclop
+      path: _test\.go$

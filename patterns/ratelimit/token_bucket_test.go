@@ -46,6 +46,7 @@ func TestTokenBucket(t *testing.T) {
 		}
 
 		time.Sleep(1 * time.Second)
+
 		for i := 0; i < 3; i++ {
 			assert.True(t, limiter.Allow(), "Should allow refilled tokens up to capacity")
 		}

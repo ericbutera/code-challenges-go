@@ -59,7 +59,7 @@ M             1000
 // 	M: 1_000,
 // }
 
-func romanToInt(input string) int { //nolint:cyclop,funlen
+func romanToInt(input string) int {
 	count := 0
 
 	length := len(input)
