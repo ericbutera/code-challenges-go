@@ -63,7 +63,7 @@ func romanToInt(input string) int {
 	count := 0
 
 	length := len(input)
-	for x := 0; x < length; x++ { //nolint:varnamelen
+	for x := 0; x < length; x++ {
 		current := string(input[x])
 
 		var current2 string
