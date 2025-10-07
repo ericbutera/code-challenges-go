@@ -3,7 +3,7 @@ repos:
     rev: v5.0.0
     hooks:
       - id: check-yaml
-        args: [--allow-multiple-documents]
+        args: [ --allow-multiple-documents ]
         exclude: ^helm/templates/
       - id: end-of-file-fixer
       - id: trailing-whitespace
@@ -13,13 +13,13 @@ repos:
     rev: v3.6.0
     hooks:
       - id: conventional-pre-commit
-        stages: [commit-msg]
+        stages: [ commit-msg ]
         args: []
 
   - repo: https://github.com/golangci/golangci-lint
-    rev: v1.62.0
+    rev: v2.4.0
     hooks:
       - id: golangci-lint-full
-        args: ["--config=.golangci.yaml"]
+        args: [ "--config=.golangci.yaml" ]
       - id: golangci-lint-config-verify
-        args: ["--config=.golangci.yaml"]
+        args: [ "--config=.golangci.yaml" ]
