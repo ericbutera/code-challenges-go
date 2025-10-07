@@ -8,6 +8,7 @@ import (
 
 func TestPointer(t *testing.T) {
 	t.Parallel()
+
 	value := 10
 	pointy := &value
 	assert.Equal(t, 10, value)

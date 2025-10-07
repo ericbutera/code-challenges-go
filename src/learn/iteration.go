@@ -5,5 +5,6 @@ func Repeat(character string, repeatCount int) string {
 	for i := 0; i < repeatCount; i++ { //nolint:intrange
 		repeated += character
 	}
+
 	return repeated
 }

@@ -9,6 +9,7 @@ import (
 
 func TestMaxSlidingWindow(t *testing.T) {
 	t.Parallel()
+
 	tests := []struct {
 		name string
 		nums []int
@@ -32,6 +33,7 @@ func TestMaxSlidingWindow(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			t.Parallel()
+
 			got := dsa.MaxSlidingWindow(tt.nums, tt.k)
 			if !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("maxSlidingWindow(%v, %d) = %v; want %v", tt.nums, tt.k, got, tt.want)
@@ -42,6 +44,7 @@ func TestMaxSlidingWindow(t *testing.T) {
 
 func TestLongestSubstringKDistinct(t *testing.T) {
 	t.Parallel()
+
 	tests := []struct {
 		name string
 		s    string
@@ -65,6 +68,7 @@ func TestLongestSubstringKDistinct(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			t.Parallel()
+
 			got := dsa.LongestSubstringKDistinct(tt.s, tt.k)
 			if got != tt.want {
 				t.Errorf("longestSubstringKDistinct(%q, %d) = %d; want %d", tt.s, tt.k, got, tt.want)
@@ -75,6 +79,7 @@ func TestLongestSubstringKDistinct(t *testing.T) {
 
 func TestTumblingWindowSum(t *testing.T) {
 	t.Parallel()
+
 	tests := []struct {
 		name string
 		nums []int
@@ -98,6 +103,7 @@ func TestTumblingWindowSum(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			t.Parallel()
+
 			got := dsa.TumblingWindowSum(tt.nums, tt.k)
 			if !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("TumblingWindowSum(%v, %d) = %v; want %v", tt.nums, tt.k, got, tt.want)

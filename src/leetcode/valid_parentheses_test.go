@@ -34,9 +34,11 @@ func (s *Stack) Pop() (string, bool) {
 	if s.IsEmpty() {
 		return "", false
 	}
+
 	index := len(*s) - 1
 	element := (*s)[index]
 	*s = (*s)[:index]
+
 	return element, true
 }
 
@@ -78,6 +80,7 @@ func parseChar(char string, stack *Stack) bool {
 
 func TestValidParentheses(t *testing.T) {
 	t.Parallel()
+
 	cases := []struct {
 		Input    string
 		Expected bool
@@ -92,6 +95,7 @@ func TestValidParentheses(t *testing.T) {
 	for _, tc := range cases {
 		t.Run(fmt.Sprintf("%v %v", tc.Input, tc.Expected), func(t *testing.T) {
 			t.Parallel()
+
 			actual := isValidParentheses(tc.Input)
 			assert.Equal(t, tc.Expected, actual)
 		})

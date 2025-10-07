@@ -6,11 +6,13 @@ import (
 
 func ArrayLoop() {
 	var arr [5]int // Define
-	arr[0] = 10    // Add (assign values to indices)
-	arr[1] = 20    // Add
-	arr[1] = 30    // Edit
+
+	arr[0] = 10 // Add (assign values to indices)
+	arr[1] = 20 // Add
+	arr[1] = 30 // Edit
 
 	fmt.Println("Iterating over array:")
+
 	for i, v := range arr {
 		fmt.Printf("Index %d, Value %d\n", i, v)
 	}

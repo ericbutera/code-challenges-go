@@ -28,18 +28,21 @@ func (d *Dog) Birthday() {
 
 func TestDog(t *testing.T) {
 	t.Parallel()
+
 	dog := Dog{Name: "Fido", Age: 1}
 	assert.Equal(t, "Woof", dog.Speak())
 }
 
 func TestDogFakeBirthday(t *testing.T) {
 	t.Parallel()
+
 	dog := Dog{Name: "Fido", Age: 1}
 	assert.Equal(t, 2, dog.FakeBirthday())
 }
 
 func TestDogBirthday(t *testing.T) {
 	t.Parallel()
+
 	dog := Dog{Name: "Luna", Age: 1}
 	dog.Birthday()
 	assert.Equal(t, 2, dog.Age)
@@ -51,6 +54,7 @@ func ExternalBirthday(d *Dog) {
 
 func TestExternalBirthday(t *testing.T) {
 	t.Parallel()
+
 	dog := Dog{Name: "Luna", Age: 1}
 	ExternalBirthday(&dog) // pass a dog pointer
 	assert.Equal(t, 2, dog.Age)

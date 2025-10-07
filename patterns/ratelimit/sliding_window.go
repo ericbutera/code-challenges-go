@@ -35,6 +35,7 @@ func (rl *SlidingWindowRateLimiter) Allow() bool {
 	i := 0
 	for ; i < len(rl.requestTimes) && rl.requestTimes[i].Before(cutoff); i++ { //nolint:revive
 	}
+
 	rl.requestTimes = rl.requestTimes[i:]
 
 	// Check if the request can be allowed

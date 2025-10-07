@@ -12,6 +12,7 @@ func TestTokenBucket(t *testing.T) {
 	t.Parallel()
 	t.Run("allow tokens within capacity", func(t *testing.T) {
 		t.Parallel()
+
 		limiter := ratelimit.NewTokenBucket(5, time.Second)
 
 		for i := 0; i < 5; i++ {
@@ -23,6 +24,7 @@ func TestTokenBucket(t *testing.T) {
 
 	t.Run("refill tokens over time", func(t *testing.T) {
 		t.Parallel()
+
 		limiter := ratelimit.NewTokenBucket(3, 500*time.Millisecond)
 
 		for i := 0; i < 3; i++ {
@@ -39,6 +41,7 @@ func TestTokenBucket(t *testing.T) {
 
 	t.Run("refill respects capacity limit", func(t *testing.T) {
 		t.Parallel()
+
 		limiter := ratelimit.NewTokenBucket(3, 200*time.Millisecond)
 
 		for i := 0; i < 3; i++ {

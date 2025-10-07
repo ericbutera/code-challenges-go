@@ -26,18 +26,22 @@ func twoSumBruteForce(nums []int, target int) []int {
 
 func twoSumCache(nums []int, target int) []int {
 	cache := map[int]int{}
+
 	for x, number := range nums {
 		search := target - number
 		if index, ok := cache[search]; ok {
 			return []int{index, x}
 		}
+
 		cache[number] = x
 	}
+
 	return []int{0, 0}
 }
 
 func TestTwoSum(t *testing.T) {
 	t.Parallel()
+
 	nums := []int{2, 7, 11, 15}
 	target := 9
 	expected := []int{0, 1}
@@ -48,6 +52,7 @@ func TestTwoSum(t *testing.T) {
 
 func TestTwoSumCases(t *testing.T) {
 	t.Parallel()
+
 	cases := []struct {
 		Numbers  []int
 		Target   int

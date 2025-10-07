@@ -9,6 +9,7 @@ import (
 
 func TestFindConflicts(t *testing.T) {
 	t.Parallel()
+
 	tests := []struct {
 		name         string
 		appointments []dsa.Interval
@@ -53,6 +54,7 @@ func TestFindConflicts(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			t.Parallel()
+
 			actual := dsa.FindConflicts(tt.appointments)
 			if !reflect.DeepEqual(actual, tt.expected) {
 				t.Errorf("findConflicts(%v) = %v; want %v", tt.appointments, actual, tt.expected)

@@ -10,6 +10,7 @@ import (
 
 func TestFixedWindowLimiter(t *testing.T) {
 	t.Parallel()
+
 	limiter := ratelimit.NewFixedWindowLimiter(1*time.Second, 5)
 
 	for i := 0; i < 5; i++ {
@@ -25,12 +26,14 @@ func TestFixedWindowLimiter(t *testing.T) {
 
 func TestDeny(t *testing.T) {
 	t.Parallel()
+
 	limiter := ratelimit.NewFixedWindowLimiter(1*time.Second, 0)
 	assert.False(t, limiter.Allow())
 }
 
 func TestDeny1(t *testing.T) {
 	t.Parallel()
+
 	limiter := ratelimit.NewFixedWindowLimiter(1*time.Second, 1)
 	assert.True(t, limiter.Allow())
 	assert.False(t, limiter.Allow())

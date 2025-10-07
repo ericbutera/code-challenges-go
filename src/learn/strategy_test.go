@@ -28,14 +28,17 @@ func (f *FullStrategy) URL() string {
 
 func TestStrategy(t *testing.T) {
 	t.Parallel()
+
 	full := &FullStrategy{}
 	assert.Equal(t, "full-url", full.URL())
+
 	inc := &IncrementalStrategy{}
 	assert.Equal(t, "incremental-url", inc.URL())
 }
 
 func TestFetcher(t *testing.T) {
 	t.Parallel()
+
 	full := &FullStrategy{}
 	assert.Equal(t, "full-url", StratFetcher(full))
 }

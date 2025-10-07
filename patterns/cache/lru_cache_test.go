@@ -41,6 +41,7 @@ func (c *LRUCache) Get(key string) any {
 	// key exists, update most recently used
 	if elem, ok := c.cache[key]; ok {
 		c.linklist.MoveToFront(elem)
+
 		if entry, ok := c.getCacheEntry(elem); ok {
 			return entry.value
 		} // delete c.cache[key] if not a cacheEntry
@@ -60,7 +61,9 @@ func (c *LRUCache) Put(key string, value any) {
 	if elem, ok := c.cache[key]; ok {
 		if entry, valid := c.getCacheEntry(elem); valid {
 			entry.value = value
+
 			c.linklist.MoveToFront(elem)
+
 			return
 		}
 	}
@@ -84,6 +87,7 @@ func (c *LRUCache) removeOldest() {
 		if entry, valid := c.getCacheEntry(last); valid {
 			delete(c.cache, entry.key)
 		}
+
 		c.linklist.Remove(last)
 	}
 }
@@ -92,6 +96,7 @@ func (c *LRUCache) getCacheEntry(elem *list.Element) (*cacheEntry, bool) {
 	if entry, ok := elem.Value.(*cacheEntry); ok {
 		return entry, true
 	}
+
 	return nil, false
 }
 
@@ -100,12 +105,14 @@ func TestLRU(t *testing.T) {
 
 	t.Run("Get non-existent entry", func(t *testing.T) {
 		t.Parallel()
+
 		c := NewLRU(2)
 		assert.Nil(t, c.Get("1"))
 	})
 
 	t.Run("Get entry", func(t *testing.T) {
 		t.Parallel()
+
 		c := NewLRU(2)
 		c.Put("1", "value1")
 		assert.Equal(t, "value1", c.Get("1"))
@@ -113,6 +120,7 @@ func TestLRU(t *testing.T) {
 
 	t.Run("Get updates most recently used", func(t *testing.T) {
 		t.Parallel()
+
 		c := NewLRU(2)
 		c.Put("1", "value1")
 		c.Put("2", 2)
@@ -123,6 +131,7 @@ func TestLRU(t *testing.T) {
 
 	t.Run("Put entries", func(t *testing.T) {
 		t.Parallel()
+
 		c := NewLRU(2)
 		c.Put("1", "value1")
 		c.Put("2", 2)
@@ -132,6 +141,7 @@ func TestLRU(t *testing.T) {
 
 	t.Run("Eviction", func(t *testing.T) {
 		t.Parallel()
+
 		c := NewLRU(2)
 		c.Put("1", "one")
 		c.Put("2", "two")
@@ -144,6 +154,7 @@ func TestLRU(t *testing.T) {
 
 	t.Run("Update entry sets most recently used", func(t *testing.T) {
 		t.Parallel()
+
 		c := NewLRU(2)
 		c.Put("1", "one")
 		c.Put("2", "two")
@@ -156,6 +167,7 @@ func TestLRU(t *testing.T) {
 
 	t.Run("Update entry updates value", func(t *testing.T) {
 		t.Parallel()
+
 		c := NewLRU(2)
 		c.Put("1", "one")
 		c.Put("1", "newone")
@@ -167,23 +179,29 @@ func TestLRU(t *testing.T) {
 		t.Parallel()
 
 		c := NewLRU(5)
+
 		var wg sync.WaitGroup
+
 		numGoroutines := 100
 
 		// Perform concurrent writes
 		wg.Add(numGoroutines)
+
 		for i := 0; i < numGoroutines; i++ {
 			go func(i int) {
 				defer wg.Done()
+
 				c.Put(fmt.Sprintf("key-%d", i%5), i) // Cycle through 5 keys
 			}(i)
 		}
 
 		// Perform concurrent reads
 		wg.Add(numGoroutines)
+
 		for i := 0; i < numGoroutines; i++ {
 			go func(i int) {
 				defer wg.Done()
+
 				_ = c.Get(fmt.Sprintf("key-%d", i%5))
 			}(i)
 		}
@@ -217,10 +235,12 @@ func (c *LRUCacheUnsafe) Get(key string) any {
 	// key exists, update most recently used
 	if elem, ok := c.cache[key]; ok {
 		c.linklist.MoveToFront(elem)
+
 		if entry, ok := elem.Value.(*cacheEntry); ok {
 			return entry.value
 		} // delete c.cache[key] if not a cacheEntry
 	}
+
 	return nil
 }
 

@@ -10,7 +10,9 @@ import (
 
 func TestArray(t *testing.T) {
 	t.Parallel()
+
 	var a [5]int
+
 	a[4] = 100
 	assert.Equal(t, 0, a[0])
 	assert.Equal(t, 100, a[4])
@@ -22,12 +24,15 @@ func TestArray(t *testing.T) {
 
 func Test2dArray(t *testing.T) {
 	t.Parallel()
+
 	var twoD [2][3]int
+
 	for i := 0; i < 2; i++ { //nolint:intrange
 		for j := 0; j < 3; j++ { //nolint:intrange
 			twoD[i][j] = i + j
 		}
 	}
+
 	res := fmt.Sprint(twoD)
 	assert.Equal(t, "[[0 1 2] [1 2 3]]", res)
 }

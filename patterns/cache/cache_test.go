@@ -17,6 +17,7 @@ func TestCache(t *testing.T) {
 
 	t.Run("memory string", func(t *testing.T) {
 		t.Parallel()
+
 		c := cache.NewInMemoryCache()
 		c.Set("key", "value")
 		value, ok := c.Get("key")
@@ -26,6 +27,7 @@ func TestCache(t *testing.T) {
 
 	t.Run("memory int", func(t *testing.T) {
 		t.Parallel()
+
 		c := cache.NewInMemoryCache()
 		c.Set("key", 42)
 		value, ok := c.Get("key")
@@ -35,10 +37,12 @@ func TestCache(t *testing.T) {
 
 	t.Run("memory object", func(t *testing.T) {
 		t.Parallel()
+
 		type Person struct {
 			ID   string
 			Name string
 		}
+
 		c := cache.NewInMemoryCache()
 		expected := Person{ID: "eric-uuid", Name: "Eric"}
 		c.Set(expected.ID, expected)
@@ -53,6 +57,7 @@ func TestExpiringCache(t *testing.T) {
 
 	t.Run("string", func(t *testing.T) {
 		t.Parallel()
+
 		key := "greeting"
 		expected := "hello!"
 		c := cache.NewExpiringCache[string](5 * time.Minute)
@@ -64,6 +69,7 @@ func TestExpiringCache(t *testing.T) {
 
 	t.Run("int", func(t *testing.T) {
 		t.Parallel()
+
 		key := "forty-two"
 		expected := 42
 		c := cache.NewExpiringCache[int](5 * time.Minute)
@@ -75,10 +81,12 @@ func TestExpiringCache(t *testing.T) {
 
 	t.Run("object", func(t *testing.T) {
 		t.Parallel()
+
 		type Person struct {
 			ID   string
 			Name string
 		}
+
 		expected := Person{ID: "eric-uuid", Name: "Eric"}
 		c := cache.NewExpiringCache[Person](5 * time.Minute)
 		c.Set(expected.ID, expected)

@@ -17,19 +17,26 @@ func ProcessTasks(ctx context.Context, tasks []func(ctx context.Context) error) 
 		mutex     sync.Mutex
 		errors    []error
 	)
+
 	group, ctx := errgroup.WithContext(ctx)
 
 	for _, task := range tasks {
 		waitGroup.Add(1)
+
 		t := task // create a local copy to avoid data race
+
 		group.Go(func() error {
 			defer waitGroup.Done()
+
 			err := t(ctx)
 			if err != nil {
 				mutex.Lock()
+
 				errors = append(errors, err)
+
 				mutex.Unlock()
 			}
+
 			return nil
 		})
 	}
@@ -40,8 +47,10 @@ func ProcessTasks(ctx context.Context, tasks []func(ctx context.Context) error) 
 		return fmt.Errorf("%w: %v", ErrTaskFailed, errors)
 	}
 
-	if err := group.Wait(); err != nil {
+	err := group.Wait()
+	if err != nil {
 		return fmt.Errorf("%w: %v", ErrTaskFailed, errors)
 	}
+
 	return nil
 }
