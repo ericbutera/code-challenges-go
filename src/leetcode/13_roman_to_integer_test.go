@@ -67,6 +67,7 @@ func romanToInt(input string) int {
 		current := string(input[x])
 
 		var current2 string
+
 		hasTwo := x+2 <= length
 		if hasTwo {
 			current2 = input[x : x+2]
@@ -108,6 +109,7 @@ func romanToInt(input string) int {
 		case current == "I":
 			inc++
 		}
+
 		count += inc
 	}
 

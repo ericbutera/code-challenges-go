@@ -11,5 +11,6 @@ func (d Dictionary) Search(word string) (string, error) {
 	if !ok {
 		return "", ErrNotFound
 	}
+
 	return definition, nil
 }

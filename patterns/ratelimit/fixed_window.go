@@ -30,15 +30,18 @@ func (l *FixedWindowLimiter) Allow() bool {
 		if k, ok := key.(int64); ok && k < currentWindow {
 			l.windows.Delete(key)
 		}
+
 		return true
 	})
 
 	// Check and update the current window
 	value, _ := l.windows.LoadOrStore(currentWindow, 0)
+
 	currentCount, ok := value.(int)
 	if !ok {
 		currentCount = 0
 	}
+
 	if currentCount < l.maxHits {
 		l.windows.Store(currentWindow, currentCount+1)
 		return true

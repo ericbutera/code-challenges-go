@@ -23,6 +23,7 @@ func MaxSlidingWindow(nums []int, k int) []int {
 			result = append(result, nums[deque[0]])
 		}
 	}
+
 	return result
 }
 
@@ -39,6 +40,7 @@ func LongestSubstringKDistinct(s string, k int) int {
 			if charCount[s[left]] == 0 {
 				delete(charCount, s[left])
 			}
+
 			left++
 		}
 
@@ -61,7 +63,9 @@ func TumblingWindowSum(nums []int, k int) []int {
 		for j := i; j < i+k && j < n; j++ {
 			sum += nums[j]
 		}
+
 		result = append(result, sum)
 	}
+
 	return result
 }

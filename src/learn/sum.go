@@ -5,6 +5,7 @@ func Sum(numbers [5]int) int {
 	for i := 0; i < 5; i++ { //nolint:intrange
 		sum += numbers[i]
 	}
+
 	return sum
 }
 

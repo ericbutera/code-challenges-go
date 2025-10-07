@@ -23,10 +23,12 @@ func worker(id int, jobs <-chan int, results chan<- string) {
 
 func TestWorkerPoolWithStrings(t *testing.T) {
 	t.Parallel()
+
 	const (
 		numJobs    = 5
 		numWorkers = 3
 	)
+
 	jobs := make(chan int, numJobs)
 	results := make(chan string, numJobs)
 
@@ -39,8 +41,10 @@ func TestWorkerPoolWithStrings(t *testing.T) {
 	expectedResults := make([]string, numJobs)
 	for j := 1; j <= numJobs; j++ {
 		jobs <- j
+
 		expectedResults[j-1] = fmt.Sprintf("worker%d-job%d", (j%numWorkers)+1, j) // Worker ID assignment can vary
 	}
+
 	close(jobs)
 
 	// Collect results

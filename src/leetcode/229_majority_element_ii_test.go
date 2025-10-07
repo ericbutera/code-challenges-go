@@ -17,6 +17,7 @@ func majorityElement(nums []int) []int {
 	threshold := len(nums) / 3
 
 	majority := []int{}
+
 	for num, count := range counter {
 		if count > threshold {
 			majority = append(majority, num)
@@ -28,6 +29,7 @@ func majorityElement(nums []int) []int {
 
 func Test_229(t *testing.T) {
 	t.Parallel()
+
 	cases := []struct {
 		Nums     []int
 		Expected []int

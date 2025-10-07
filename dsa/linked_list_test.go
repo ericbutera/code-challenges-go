@@ -14,6 +14,7 @@ type ListNode struct {
 
 func ReverseList(head *ListNode) *ListNode {
 	var prev *ListNode
+
 	curr := head
 
 	for curr != nil {
@@ -22,6 +23,7 @@ func ReverseList(head *ListNode) *ListNode {
 		prev = curr       // Move prev to current node
 		curr = next       // Move to next node
 	}
+
 	return prev
 }
 
@@ -60,6 +62,7 @@ func (l *LinkedList) Read(index int) int {
 		slog.Info("Current node:", "val", current.Val)
 		current = current.Next
 	}
+
 	return current.Val
 }
 
@@ -76,13 +79,16 @@ func TestRead(t *testing.T) {
 func (l *LinkedList) IndexOf(value int) int {
 	current := l.Head
 	index := 0
+
 	for current != nil {
 		if current.Val == value {
 			return index
 		}
+
 		current = current.Next
 		index++
 	}
+
 	return -1
 }
 
@@ -101,6 +107,7 @@ func (l *LinkedList) Insert(index, value int) {
 	if index == 0 {
 		newNode.Next = l.Head
 		l.Head = newNode
+
 		return
 	}
 
@@ -108,6 +115,7 @@ func (l *LinkedList) Insert(index, value int) {
 	for i := 0; i < index-1; i++ {
 		current = current.Next
 	}
+
 	newNode.Next = current.Next
 	current.Next = newNode
 }
@@ -132,6 +140,7 @@ func (l *LinkedList) Delete(index int) {
 	for i := 0; i < index-1; i++ {
 		current = current.Next
 	}
+
 	current.Next = current.Next.Next
 }
 

@@ -74,12 +74,15 @@ func closerFor(closer string) string {
 	if closer == "(" {
 		return ")"
 	}
+
 	if closer == "{" {
 		return "}"
 	}
+
 	if closer == "[" {
 		return "]"
 	}
+
 	panic("lies")
 }
 
@@ -114,6 +117,7 @@ func isValid(s string) bool {
 
 func Test_20(t *testing.T) {
 	t.Parallel()
+
 	cases := []struct {
 		Name   string
 		Input  string

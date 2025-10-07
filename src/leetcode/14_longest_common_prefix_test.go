@@ -60,9 +60,10 @@ Constraints:
 
 func longestCommonPrefix(words []string) string {
 	wordCount := len(words)
-	if wordCount == 0 {
+	switch wordCount {
+	case 0:
 		return ""
-	} else if wordCount == 1 {
+	case 1:
 		return words[0] // prefix is word
 	}
 
@@ -70,7 +71,8 @@ func longestCommonPrefix(words []string) string {
 
 	// note: hasOffset can be removed if we first find the smallest word before iterating
 
-	matchWord := words[0]                             // matchWord = flower; use first word as bounds check
+	matchWord := words[0] // matchWord = flower; use first word as bounds check
+
 	matchLength := len(matchWord)                     // matchLength = 6; len(flower)
 	for cursor := 0; cursor < matchLength; cursor++ { //nolint:intrange
 		matchLetter := matchWord[cursor] // matchLetter = f
@@ -81,6 +83,7 @@ func longestCommonPrefix(words []string) string {
 			}
 
 			letter := word[cursor] // letter = f
+
 			mismatch := matchLetter != letter
 			if mismatch {
 				return prefix // mismatch, use longest existing prefix
@@ -95,6 +98,7 @@ func longestCommonPrefix(words []string) string {
 
 func Test_14(t *testing.T) {
 	t.Parallel()
+
 	cases := []struct {
 		Name     string
 		Input    []string

@@ -1,26 +1,45 @@
-# https://golangci-lint.run/usage/linters/
+version: "2"
 linters:
-  enable-all: true
-  disable:
-    - intrange
-    - depguard
-    - nlreturn
-    - exportloopref
-    - wsl # only one cuddle assignment allowed before range statement
-    - lll # line length limit
-    - godox
-    - godot
-    - mnd
-    - exhaustruct
-    - varnamelen
-
-issues:
-  exclude-rules:
-    - linters:
-        - funlen
-        - cyclop
+    default: all
+    disable:
+        - depguard
+        - exhaustruct
+        - godot
+        - godox
+        - intrange
+        - lll
+        - mnd
+        - nlreturn
         - varnamelen
-        - govet
-        - varnamelen
-        - forbidigo
-      path: _test\.go$
+        - wsl
+    exclusions:
+        generated: lax
+        presets:
+            - comments
+            - common-false-positives
+            - legacy
+            - std-error-handling
+        rules:
+            - linters:
+                  - cyclop
+                  - forbidigo
+                  - funlen
+                  - govet
+                  - varnamelen
+              path: _test\.go$
+        paths:
+            - third_party$
+            - builtin$
+            - examples$
+formatters:
+    enable:
+        - gci
+        - gofmt
+        - gofumpt
+        - goimports
+    exclusions:
+        generated: lax
+        paths:
+            - third_party$
+            - builtin$
+            - examples$

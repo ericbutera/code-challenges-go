@@ -13,11 +13,13 @@ func TestHello(t *testing.T) {
 	t.Parallel()
 	t.Run("saying hello to people", func(t *testing.T) {
 		t.Parallel()
+
 		got := learn.Hello("Eric")
 		assert.Equal(t, "Hello, Eric", got)
 	})
 	t.Run("say 'Hello, World' when empty string is supplied", func(t *testing.T) {
 		t.Parallel()
+
 		got := learn.Hello("")
 		assert.Equal(t, "Hello, World", got)
 	})
@@ -36,6 +38,7 @@ func TestTableDrivenHello(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.in, func(t *testing.T) {
 			t.Parallel()
+
 			got := learn.Hello(tt.in)
 			assert.Equal(t, tt.out, got)
 		})
@@ -55,6 +58,7 @@ func TestTableDrivenMapHello(t *testing.T) {
 	for name, test := range tests {
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
+
 			got := learn.Hello(test.input)
 			assert.Equal(t, test.result, got)
 		})

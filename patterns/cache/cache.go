@@ -38,6 +38,7 @@ func NewExpiringCache[T any](ttl time.Duration) *ExpiringCache[T] {
 		ttl: ttl,
 	}
 	go c.cleanupExpiredEntries()
+
 	return c
 }
 
@@ -51,6 +52,7 @@ func (c *ExpiringCache[T]) Get(key string) (*T, bool) {
 	if !valid {
 		return nil, false
 	}
+
 	if time.Now().After(item.expiration) {
 		c.cache.Delete(key)
 		return nil, false
@@ -73,15 +75,18 @@ func (c *ExpiringCache[T]) cleanupExpiredEntries() {
 	for {
 		time.Sleep(c.ttl / CleanupIntervalFactor)
 		now := time.Now()
+
 		c.cache.Range(func(key, value any) bool {
 			item, ok := value.(ExpireItem[T])
 			if !ok {
 				c.cache.Delete(key)
 				return true
 			}
+
 			if now.After(item.expiration) {
 				c.cache.Delete(key)
 			}
+
 			return true
 		})
 	}

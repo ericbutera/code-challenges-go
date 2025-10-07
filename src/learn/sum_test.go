@@ -10,6 +10,7 @@ import (
 
 func TestSum(t *testing.T) {
 	t.Parallel()
+
 	numbers := [5]int{1, 2, 3, 4, 5}
 	got := learn.Sum(numbers)
 	assert.Equal(t, 15, got)
@@ -17,6 +18,7 @@ func TestSum(t *testing.T) {
 
 func TestAdder(t *testing.T) {
 	t.Parallel()
+
 	sum := learn.Add(2, 2)
 	assert.Equal(t, 4, sum)
 }

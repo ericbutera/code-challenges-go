@@ -11,6 +11,7 @@ func mockStockPriceStreamer(prices chan<- float64, values []float64) {
 	for _, price := range values {
 		prices <- price // Send predefined prices
 	}
+
 	close(prices)
 }
 
@@ -43,11 +44,14 @@ func TestStockPriceStreamerAndWorkers(t *testing.T) {
 
 	// Collect alerts
 	var actualAlerts []string
+
 	done := make(chan struct{})
+
 	go func() {
 		for alert := range alerts {
 			actualAlerts = append(actualAlerts, alert)
 		}
+
 		close(done)
 	}()
 

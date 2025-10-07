@@ -15,6 +15,7 @@ func TestProcessTasks(t *testing.T) {
 	t.Parallel()
 	t.Run("all tasks succeed", func(t *testing.T) {
 		t.Parallel()
+
 		ctx := context.Background()
 		tasks := []func(ctx context.Context) error{
 			func(_ context.Context) error { return nil },
@@ -28,6 +29,7 @@ func TestProcessTasks(t *testing.T) {
 
 	t.Run("one task fails", func(t *testing.T) {
 		t.Parallel()
+
 		ctx := context.Background()
 		tasks := []func(ctx context.Context) error{
 			func(_ context.Context) error { return nil },
@@ -41,6 +43,7 @@ func TestProcessTasks(t *testing.T) {
 
 	t.Run("all tasks fail", func(t *testing.T) {
 		t.Parallel()
+
 		ctx := context.Background()
 		tasks := []func(ctx context.Context) error{
 			func(_ context.Context) error { return errorgroup.ErrTaskFailed },
